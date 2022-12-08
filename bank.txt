@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
+contract Account{
+    address owner;
+    event LogDepositMade(address indexed accountAddress, uint amount);
+    constructor() public payable{
+        owner=msg.sender;
+    }
+    modifier ifOwner(){
+        if(owner != msg.sender){
+            revert();
+        }
+        else{
+            _;
+        }
+    }
+ 
+    function deposit() public payable returns (uint) {
+        emit LogDepositMade(msg.sender, msg.value);
+    }
+    receive() external payable{
+        emit LogDepositMade(msg.sender, msg.value);
+    }
+    function withdraw(uint funds) public ifOwner{
+        payable(msg.sender).transfer(funds);
+    }
+    function getbalance() public view returns (uint){
+        return address(this).balance;
+    }
+ 
+ 
+}
+contract Sender {
+    constructor () public payable{}
+    function sendEther(address payable account) public {
+        account.transfer(1 ether);
+    }
+   
+    function getBalance() public view returns (uint256) {
+      return address(this).balance;
+    }
+}

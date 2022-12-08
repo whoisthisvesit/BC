@@ -1,0 +1,15 @@
+pragma solidity ^0.5.0;
+contract Test {
+   function getResultView() public view returns(uint product, uint sum){
+       uint num1 = 10;
+       uint num2 = 16;
+      product = num1 * num2;
+      sum = num1 + num2; 
+   }
+   function getResultPure() public pure returns(uint product, uint sum){
+      uint num1 = 2; 
+      uint num2 = 4;
+      product = num1 * num2;
+      sum = num1 + num2; 
+   }
+}

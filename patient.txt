@@ -1,0 +1,16 @@
+pragma solidity ^0.8.13; 
+contract Patient { 
+string patientName; 
+string patientDoctor; 
+string patientMedicine; 
+string patientDisease; 
+function get() public view returns (string memory,string memory,string memory,string memory) { 
+return (patientName,patientDoctor,patientMedicine,patientDisease); 
+} 
+function set(string memory name,string memory doc,string memory med,string memory dis) public { 
+patientName = name; 
+patientDoctor=doc; 
+patientMedicine=med; 
+patientDisease=dis; 
+} 
+}

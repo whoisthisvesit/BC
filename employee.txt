@@ -1,0 +1,24 @@
+pragma solidity ^0.5.0; 
+pragma experimental ABIEncoderV2; 
+contract Employee { 
+struct Employee { 
+string EmployeeName; 
+string EmployeeAddress; 
+string EmployeeDepartment; 
+uint256 EmployeeID; 
+uint256 EmployeeServiceYears; 
+} 
+Employee[] emp; 
+function SetEmployeeInfo( 
+string memory EmployeeName, 
+string memory EmployeeAddress, 
+string memory EmployeeDepartment, 
+uint256 EmployeeID, 
+uint256 EmployeeServiceYears 
+) public {
+emp.push(Employee(EmployeeName, EmployeeAddress, EmployeeDepartment,EmployeeID, EmployeeServiceYears)); 
+} 
+function GetEmployeedData() public view returns (Employee[] memory) { 
+return emp; 
+} 
+} 
